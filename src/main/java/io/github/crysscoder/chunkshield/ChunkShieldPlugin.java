@@ -23,6 +23,8 @@ import org.bukkit.event.block.BlockExplodeEvent;
 import org.bukkit.event.block.BlockIgniteEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
+import org.bukkit.event.player.PlayerBucketEmptyEvent;
+import org.bukkit.event.player.PlayerBucketFillEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
@@ -71,6 +73,22 @@ public final class ChunkShieldPlugin extends JavaPlugin implements Listener, Com
 
     @EventHandler
     public void onPlace(BlockPlaceEvent event) {
+        if (blocked(event.getPlayer(), event.getBlock())) {
+            event.setCancelled(true);
+            send(event.getPlayer(), "blocked");
+        }
+    }
+
+    @EventHandler
+    public void onBucketEmpty(PlayerBucketEmptyEvent event) {
+        if (blocked(event.getPlayer(), event.getBlock())) {
+            event.setCancelled(true);
+            send(event.getPlayer(), "blocked");
+        }
+    }
+
+    @EventHandler
+    public void onBucketFill(PlayerBucketFillEvent event) {
         if (blocked(event.getPlayer(), event.getBlock())) {
             event.setCancelled(true);
             send(event.getPlayer(), "blocked");
@@ -136,7 +154,7 @@ public final class ChunkShieldPlugin extends JavaPlugin implements Listener, Com
         }
 
         if (action.equals("claim")) {
-            claim(player, player.getChunk(), false);
+            claim(player, player.getChunk(), true);
             return true;
         }
 
