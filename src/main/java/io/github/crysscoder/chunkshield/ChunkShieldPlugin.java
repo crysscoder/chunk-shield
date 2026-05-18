@@ -20,6 +20,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockBurnEvent;
 import org.bukkit.event.block.BlockExplodeEvent;
+import org.bukkit.event.block.BlockFromToEvent;
 import org.bukkit.event.block.BlockIgniteEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
@@ -115,6 +116,15 @@ public final class ChunkShieldPlugin extends JavaPlugin implements Listener, Com
     @EventHandler
     public void onIgnite(BlockIgniteEvent event) {
         if (owner(event.getBlock().getChunk()) != null) {
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onFlow(BlockFromToEvent event) {
+        String fromOwner = owner(event.getBlock().getChunk());
+        String toOwner = owner(event.getToBlock().getChunk());
+        if (toOwner != null && !Objects.equals(fromOwner, toOwner)) {
             event.setCancelled(true);
         }
     }
