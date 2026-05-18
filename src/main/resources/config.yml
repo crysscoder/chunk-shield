@@ -1,0 +1,16 @@
+item-material: NETHER_STAR
+item-name: "&aChunk Shield"
+messages:
+  prefix: "&7[&aChunkShield&7]"
+  only-player: "%prefix% &fКоманда доступна только игроку."
+  no-permission: "%prefix% &fНет прав."
+  reloaded: "%prefix% &fКонфиг перезагружен."
+  given: "%prefix% &fПредмет выдан."
+  claimed: "%prefix% &fЧанк защищён."
+  already: "%prefix% &fЭтот чанк уже защищён."
+  not-claimed: "%prefix% &fЭтот чанк не защищён."
+  not-owner: "%prefix% &fЭто не твой чанк."
+  unclaimed: "%prefix% &fЗащита снята."
+  protected: "%prefix% &fЧанк защищён игроком &a%owner%&f."
+  blocked: "%prefix% &fЭтот чанк защищён."
+  need-item: "%prefix% &fНужен предмет Chunk Shield."

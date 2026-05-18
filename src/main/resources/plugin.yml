@@ -1,0 +1,23 @@
+name: ChunkShield
+version: ${version}
+main: io.github.crysscoder.chunkshield.ChunkShieldPlugin
+api-version: '1.21'
+author: crysscoder
+description: Chunk protection item for Paper servers.
+commands:
+  chunkshield:
+    description: Manage chunk shields.
+    usage: /chunkshield
+    aliases:
+      - cshield
+      - shieldchunk
+permissions:
+  chunkshield.use:
+    description: Use ChunkShield.
+    default: true
+  chunkshield.admin:
+    description: Admin actions.
+    default: op
+  chunkshield.bypass:
+    description: Bypass protection.
+    default: op
